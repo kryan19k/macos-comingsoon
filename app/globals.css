@@ -1,0 +1,362 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=SF+Pro+Text:wght@300;400;500;600&family=SF+Mono:wght@400;500;600&display=swap');
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background: #000000;
+    color: #ffffff;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* macOS System Font Stack */
+  .font-sf-pro {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  .font-sf-mono {
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+  }
+  
+  /* Terminal Cursor Animation */
+  .animate-blink {
+    animation: blink 1s infinite;
+  }
+  
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+  
+  /* macOS Window Shadows */
+  .macos-window-shadow {
+    box-shadow: 
+      0 25px 50px -12px rgba(0, 0, 0, 0.25),
+      0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+  
+  /* macOS Backdrop Blur */
+  .macos-blur {
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+  
+  /* Enhanced Realistic macOS Dock */
+  .macos-dock-container {
+    position: relative;
+  }
+  
+  .macos-dock-container::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 20px;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.1), transparent);
+    border-radius: 50%;
+    filter: blur(8px);
+    opacity: 0.6;
+  }
+  
+  /* Terminal Styling */
+  .terminal-window {
+    background: linear-gradient(145deg, #1a1a1a 0%, #0d1117 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .terminal-header {
+    background: linear-gradient(180deg, #2d2d2d 0%, #1a1a1a 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Traffic Light Buttons */
+  .traffic-light {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  
+  .traffic-light:hover {
+    filter: brightness(1.2);
+    transform: scale(1.1);
+  }
+  
+  .traffic-light::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  
+  .traffic-light:hover::after {
+    opacity: 1;
+  }
+  
+  /* Scrollbar Styling */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+}
+
+@layer utilities {
+  /* Text Selection */
+  ::selection {
+    background-color: rgba(59, 130, 246, 0.3);
+    color: white;
+  }
+  
+  /* Focus Styles */
+  .focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #3b82f6, 0 0 0 4px rgba(59, 130, 246, 0.2);
+  }
+  
+  /* Gradient Text */
+  .gradient-text {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Glass Effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Browser Window Animations */
+  .animate-in {
+    animation: slideIn 0.3s ease-out;
+  }
+  
+  .zoom-in-95 {
+    animation: zoomIn 0.3s ease-out;
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes zoomIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Smooth Transition */
+  .smooth-transition {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* App Launch Animation */
+  @keyframes appLaunch {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .app-launching {
+    animation: appLaunch 0.3s ease-out;
+  }
+
+  /* Window Slide In Animation */
+  @keyframes windowSlideIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8) translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  .window-enter {
+    animation: windowSlideIn 0.3s ease-out;
+  }
+
+  /* Menu Dropdown Animation */
+  @keyframes menuDropdown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .menu-dropdown {
+    animation: menuDropdown 0.2s ease-out;
+  }
+
+  /* Dock Icon Bounce */
+  @keyframes dockBounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+
+  .dock-bounce {
+    animation: dockBounce 0.6s ease-in-out;
+  }
+
+  /* Realistic Window Shadows */
+  .window-shadow {
+    box-shadow: 
+      0 25px 50px -12px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  /* Interactive Button Effects */
+  .interactive-button {
+    transition: all 0.15s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .interactive-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .interactive-button:hover::before {
+    left: 100%;
+  }
+
+  .interactive-button:active {
+    transform: scale(0.98);
+  }
+
+  /* Mobile-specific improvements */
+  @media (max-width: 768px) {
+    /* Improve touch targets */
+    .dock-icon {
+      min-width: 44px;
+      min-height: 44px;
+    }
+    
+    /* Reduce backdrop blur on mobile for better performance */
+    .macos-blur {
+      backdrop-filter: blur(10px) saturate(150%);
+      -webkit-backdrop-filter: blur(10px) saturate(150%);
+    }
+    
+    /* Adjust menu dropdown positioning */
+    .menu-dropdown {
+      max-width: calc(100vw - 2rem);
+      left: 0 !important;
+      right: 0;
+      margin: 0 1rem;
+    }
+    
+    /* Improve scrolling on mobile */
+    .custom-scrollbar {
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Hide hover effects on mobile */
+    .group:hover .group-hover\:scale-105 {
+      transform: none;
+    }
+    
+    /* Adjust window shadows for mobile */
+    .window-shadow {
+      box-shadow: 
+        0 10px 25px -5px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    }
+  }
+
+  /* Touch-friendly improvements */
+  @media (hover: none) and (pointer: coarse) {
+    /* Remove hover effects on touch devices */
+    .hover\:bg-white\/10:hover {
+      background-color: transparent;
+    }
+    
+    .hover\:scale-105:hover {
+      transform: none;
+    }
+    
+    /* Improve button press feedback */
+    .cursor-pointer:active {
+      transform: scale(0.95);
+      transition: transform 0.1s ease;
+    }
+  }
+} 
