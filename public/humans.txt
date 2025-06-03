@@ -1,0 +1,16 @@
+/* TEAM */
+Developer: Bullish Cafe Development Team
+Contact: dev@bullishcafe.com
+Location: Global
+
+/* THANKS */
+Framework: Next.js
+UI Library: Tailwind CSS
+Animation: Framer Motion
+Icons: Lucide React
+
+/* SITE */
+Last update: 2024/01/01
+Language: English
+Doctype: HTML5
+IDE: Cursor, VS Code 
